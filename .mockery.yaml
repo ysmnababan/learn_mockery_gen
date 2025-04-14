@@ -1,0 +1,16 @@
+with-expecter: True
+keeptree: False # This prevents preserving the package structure
+quiet: False
+disable-version-string: True
+mockname: "{{.InterfaceName}}"
+filename: "{{.MockName}}.go"
+outpkg: mocks
+dir: "./mocks" # This specifies where mocks will be generated
+packages:
+  mockery/repository:
+    interfaces:
+      AnyRepository:
+  # add a list of interface according to the file location
+  # mockery/service:
+    # interface:
+      # AnyService:
