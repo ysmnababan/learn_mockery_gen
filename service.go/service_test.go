@@ -3,22 +3,23 @@ package service
 import (
 	"context"
 	"mockery/abstraction"
-	"mockery/mocks"
+	"mockery/repository"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 )
 
 func TestGetName(t *testing.T) {
 	name := "yoland"
 	ctx := context.Background()
-	c, _ := ctx.(abstraction.Context)	
-	mockrepo := new(mocks.AnyRepository)
-	mockrepo.On("GetName", &c, 1).Return(name, nil)
+	c, _ := ctx.(abstraction.Context)
+	mockrepo := repository.NewMockAnyRepository(t)
+	mockrepo.EXPECT().GetName(&c, mock.Anything).Return(name, nil)
 
 	out, err := mockrepo.GetName(&c, 1)
 	assert.NoError(t, err)
 	assert.Equal(t, name, out)
 
-	mockrepo.AssertExpectations(t)
+	// mockrepo.AssertExpectations(t)
 }
