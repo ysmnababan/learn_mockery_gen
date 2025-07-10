@@ -15,8 +15,8 @@ You can generate mocks in two ways:
 Use this method by specifying the interface name and its directory:
 
 ```bash
-docker pull vektra/mockery
-docker run --rm -v "%cd%:/src" -w /src vektra/mockery:latest --name AnyRepository --dir=repository (for windows)
+docker pull vektra/mockery:3.5
+docker run --rm -v "%cd%:/src" -w /src vektra/mockery --name AnyRepository --dir=repository (for windows)
 ```
 
 > Replace `AnyRepository` with your interface name and `repository` with the relative path to it.
@@ -30,7 +30,7 @@ Steps:
 1. Pull the Docker image:
 
 ```bash
-docker pull vektra/mockery
+docker pull vektra/mockery:3.5
 ```
 
 2. Edit the `.mockery.yaml` file (see example below).
@@ -38,7 +38,7 @@ docker pull vektra/mockery
 3. Run mock generation:
 
 ```bash
-docker run --rm -v "%cd%:/src" -w /src vektra/mockery:latest (for windows)
+docker run --rm -v "%cd%:/src" -w /src vektra/mockery (for windows)
 ```
 
 #### Example `.mockery.yaml`
