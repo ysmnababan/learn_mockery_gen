@@ -1,16 +1,15 @@
-with-expecter: True
-keeptree: False # This prevents preserving the package structure
-quiet: False
-disable-version-string: True
-mockname: "{{.InterfaceName}}"
-filename: "{{.MockName}}.go"
-outpkg: mocks
-dir: "./mocks" # This specifies where mocks will be generated
+all: false
+force-file-write: false
+formatter: goimports
+log-level: info
+recursive: false
+template: testify
 packages:
   mockery/repository:
+    config:
+      dir: "{{.InterfaceDir}}"
+      filename: "repository_mock.go"
+      pkgname: "{{.SrcPackageName}}"
+      structname: "Mock{{.InterfaceName}}"
     interfaces:
       AnyRepository:
-  # add a list of interface according to the file location
-  # mockery/service:
-    # interface:
-      # AnyService:
